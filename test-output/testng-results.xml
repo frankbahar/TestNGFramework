@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="17856" started-at="2019-06-11T04:01:25Z" finished-at="2019-06-11T04:01:43Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="17856" started-at="2019-06-11T04:01:25Z" finished-at="2019-06-11T04:01:43Z">
+      <class name="com.frankbahar.testcases.AddEmployeeTest">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.frankbahar.testcases.AddEmployeeTest@8bd1b6a]" name="setUp" is-config="true" duration-ms="6220" started-at="2019-06-11T04:01:25Z" finished-at="2019-06-11T04:01:31Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="addEmployeeTest()[pri:0, instance:com.frankbahar.testcases.AddEmployeeTest@8bd1b6a]" name="addEmployeeTest" duration-ms="7913" started-at="2019-06-11T04:01:31Z" finished-at="2019-06-11T04:01:39Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addEmployeeTest -->
+        <test-method status="PASS" signature="quitDriver()[pri:0, instance:com.frankbahar.testcases.AddEmployeeTest@8bd1b6a]" name="quitDriver" is-config="true" duration-ms="3699" started-at="2019-06-11T04:01:39Z" finished-at="2019-06-11T04:01:43Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- quitDriver -->
+      </class> <!-- com.frankbahar.testcases.AddEmployeeTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
