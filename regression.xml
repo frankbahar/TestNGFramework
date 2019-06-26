@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Regression Suite">
+	<groups>
+		<run>
+			<exclude name="smoke" />
+			<include name="regression"/>
+		</run>
+	</groups>
+	<test thread-count="5" name="Regression Test">
+		<packages>
+			<package name="com.frankbahar.testcases" />
+		</packages>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->

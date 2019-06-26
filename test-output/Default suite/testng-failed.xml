@@ -7,7 +7,7 @@
         <methods>
           <include name="setUp"/>
           <include name="quitDriver"/>
-          <include name="addEmployeeTest"/>
+          <include name="addEmployeeTest" invocation-numbers="3 5 8"/>
         </methods>
       </class> <!-- com.frankbahar.testcases.AddEmployeeTest -->
     </classes>

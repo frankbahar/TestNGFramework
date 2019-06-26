@@ -16,14 +16,27 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class CommonMethods extends BaseClass{
-	
+public class CommonMethods extends BaseClass {
+
 	/**
 	 * @author Frank Bahar This method will click the element specified
 	 * @param Select element
 	 */
 	public static void click(WebElement element) {
 		element.click();
+	}
+
+	public static void selectList(WebElement element, String text) {
+		// this is for dropdown which is not using select tag
+		List<WebElement> listLocations = element.findElements(By.tagName("li"));
+
+		for (WebElement li : listLocations) {
+			String liText = li.getAttribute("innerHTML");
+			if (liText.contains(text)) {
+				li.click();
+				break;
+			}
+		}
 	}
 
 	/**
@@ -163,13 +176,13 @@ public class CommonMethods extends BaseClass{
 				String value = option.getAttribute("value");
 				if (value.equals(text)) {
 					option.click();
-					isElementSelected=true;
+					isElementSelected = true;
 					break;
 				}
 			}
 		}
-		if(!isElementSelected) {
-			System.out.println("Option with text " + text + " is not available");	
+		if (!isElementSelected) {
+			System.out.println("Option with text " + text + " is not available");
 		}
 	}
 
@@ -179,22 +192,23 @@ public class CommonMethods extends BaseClass{
 	 * @param Select <List<WebElement>, List<String> text
 	 */
 	public static void selectValueFromCheckbox(List<WebElement> options, List<String> texts) {
-		boolean isElementSelected=false;
+		boolean isElementSelected = false;
 		for (String text : texts) {
 			for (WebElement option : options) {
 				if (option.isEnabled()) {
 					String value = option.getAttribute("value");
 					if (value.equals(text)) {
-						option.click(); 
-						isElementSelected=true;
+						option.click();
+						isElementSelected = true;
 					}
 				}
 			}
 		}
-		if(!isElementSelected) {
-			System.out.println("No option is available with any text requested could not select");	
+		if (!isElementSelected) {
+			System.out.println("No option is available with any text requested could not select");
 		}
 	}
+
 	/**
 	 * @author Frank Bahar Method that will wait for element to be visible
 	 * 
@@ -204,7 +218,7 @@ public class CommonMethods extends BaseClass{
 		WebDriverWait wait = new WebDriverWait(driver, time);
 		wait.until(ExpectedConditions.visibilityOf(element));
 	}
-	
+
 	/**
 	 * @author Frank Bahar Method that will wait for element to be visible
 	 * 
@@ -219,7 +233,7 @@ public class CommonMethods extends BaseClass{
 	 * @author Frank Bahar Method that will wait for element to be clickable
 	 * 
 	 * @param WebElement element, int time
-	 * */
+	 */
 	public static void waitForElementBeClickable(WebElement element, int time) {
 		WebDriverWait wait = new WebDriverWait(driver, time);
 		wait.until(ExpectedConditions.elementToBeClickable(element));
@@ -240,17 +254,19 @@ public class CommonMethods extends BaseClass{
 	 * 
 	 * @param String filePath
 	 */
-	public static void takeScreenshot(String filePath) {
+	public static String takeScreenshot(String filePath) {
 		TakesScreenshot ts = (TakesScreenshot) driver;
 		File upload = ts.getScreenshotAs(OutputType.FILE);
+		String dest= System.getProperty("user.dir") + "/target/screenshots/" + filePath + ".png";
 		try {
-			FileUtils.copyFile(upload, new File("screenshots/" + filePath + ".png"));
+			FileUtils.copyFile(upload, new File(dest));
 		} catch (IOException e) {
 			System.out.println("Screenshot could not captured");
 			e.printStackTrace();
 		}
+		return dest;
 	}
-	
+
 	/**
 	 * @author Frank Bahar This method will scroll down to given pixel
 	 * 
@@ -260,7 +276,7 @@ public class CommonMethods extends BaseClass{
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollBy(0," + pixels + ")");
 	}
-	
+
 	/**
 	 * @author Frank Bahar This method will scroll up to given pixel
 	 * 
@@ -280,19 +296,18 @@ public class CommonMethods extends BaseClass{
 		JavascriptExecutor js = ((JavascriptExecutor) driver);
 		js.executeScript("arguments[0].scrollIntoView(true);", element);
 	}
-	
-	
+
 	/**
 	 * @author Frank Bahar This method will click element by Javascript
 	 * 
-	 * WebElement element
+	 *         WebElement element
 	 */
 	public static void jsClick(WebElement element) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].click();", element);
 
 	}
-	
+
 	/**
 	 * @author Frank Bahar return title of the page by Javascript
 	 * 
@@ -302,5 +317,5 @@ public class CommonMethods extends BaseClass{
 		JavascriptExecutor js = ((JavascriptExecutor) driver);
 		String title = js.executeScript("return document.title;").toString();
 		return title;
-	}	
+	}
 }

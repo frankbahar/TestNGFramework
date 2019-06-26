@@ -1,5 +1,7 @@
 package com.frankbahar.pages;
 
+import java.util.List;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -21,6 +23,16 @@ public class HomePage extends BaseClass{
 	public WebElement empSearchBtn;
 	@FindBy(xpath="//table[@id='employeeListTable']/tbody/tr")
 	public WebElement empRows;
+	@FindBy(xpath="//*[@id=\"menu_admin_viewAdminModule\"]/a/span[3]")
+	public WebElement adminLink;
+	@FindBy(xpath="//*[@id=\"menu_admin_Organization\"]/a/span[3]")
+	public WebElement organization;
+	@FindBy(xpath="//*[@id=\"menu_admin_viewLocations\"]/span[2]")
+	public WebElement locationsLink;
+	@FindBy(xpath="//*[@id=\"locationDiv\"]/div/a/i")
+	public WebElement locationAdd;
+	@FindBy(xpath="//table[@class='highlight bordered']/tbody/tr/td[2]")
+	public List<WebElement> locationList;
 	
 	public HomePage() {
 		PageFactory.initElements(driver, this);

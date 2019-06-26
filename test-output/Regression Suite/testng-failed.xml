@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Regression Suite]">
+  <test thread-count="5" name="Regression Test(failed)">
+    <groups>
+      <run>
+        <include name="regression"/>
+        <exclude name="smoke"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="com.frankbahar.testcases.AddEmployeeTest">
+        <methods>
+          <include name="setUp"/>
+          <include name="quitDriver"/>
+          <include name="addEmployeeTest" invocation-numbers="2"/>
+        </methods>
+      </class> <!-- com.frankbahar.testcases.AddEmployeeTest -->
+    </classes>
+  </test> <!-- Regression Test(failed) -->
+</suite> <!-- Failed suite [Regression Suite] -->
